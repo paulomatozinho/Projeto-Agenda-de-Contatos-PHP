@@ -6,6 +6,13 @@
     <a href="index.php?menuop=cad-contato">Novo Contato</a>
 </div>
 
+<div>
+    <form action="index.php?menuop=contatos" method="post">
+        <input type="text" name="txt_pesquisa">
+        <input type="submit" value="Pesquisar">
+    </form>
+</div>
+
 <table border="1">
     <thead>
         <tr>
@@ -23,6 +30,8 @@
 
     <tbody>
         <?php
+
+        $txt_pesquisa = (isset($_POST["txt_pesquisa"])) ?$_POST["txt_pesquisa"] : "";
         $sql = "SELECT 
         id_Contato,
         upper(nome_Contato) AS nome_Contato,
@@ -36,7 +45,11 @@
             'NÃO ESPECIFICADO'
         END AS sexo_Contato,
         date_format(dataNasc_Contato,'%d/%m/%Y') AS dataNasc_Contato
-        FROM tb_contatos;";
+        FROM tb_contatos
+        WHERE
+        id_Contato='{$txt_pesquisa}' or
+        nome_Contato LIKE '%{$txt_pesquisa}%'
+        ORDER BY nome_Contato ASC;";
         $rs = mysqli_query($conexao, $sql) or die("Erro na consulta" . mysqli_error($conexao));
         while ($dados = mysqli_fetch_assoc($rs)) {
         ?>
