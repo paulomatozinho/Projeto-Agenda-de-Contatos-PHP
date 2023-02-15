@@ -1,8 +1,7 @@
-
-
 body {
     background-color: #797676;
     color: #fff;
+    font-size: 2rem;
 }
 
 a {
@@ -11,4 +10,8 @@ a {
 
 img {
     width: 120px;
+}
+
+.tabela {
+    margin-top: 10px;
 }

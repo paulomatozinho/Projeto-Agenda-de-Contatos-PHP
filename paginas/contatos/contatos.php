@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="css/style.css">
+
 <header>
     Contatos
 </header>
@@ -13,32 +15,33 @@
     </form>
 </div>
 
-<table border="1">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>E-mail</th>
-            <th>Telefone</th>
-            <th>Endereço</th>
-            <th>Sexo</th>
-            <th>Nascimento</th>
-            <th>Editar</th>
-            <th>Excluir</th>
-        </tr>
-    </thead>
+<div class="tabela">
+    <table class=" table table-dark table-hover table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>E-mail</th>
+                <th>Telefone</th>
+                <th>Endereço</th>
+                <th>Sexo</th>
+                <th>Nascimento</th>
+                <th>Editar</th>
+                <th>Excluir</th>
+            </tr>
+        </thead>
 
-    <tbody>
-        <?php
+        <tbody>
+            <?php
 
-        $quantidade = 3;
+            $quantidade = 5;
 
-        $pagina = (isset($_GET['pagina'])) ? (int)$_GET['pagina'] : 1;
+            $pagina = (isset($_GET['pagina'])) ? (int)$_GET['pagina'] : 1;
 
-        $inicio = ($quantidade * $pagina) - $quantidade;
+            $inicio = ($quantidade * $pagina) - $quantidade;
 
-        $txt_pesquisa = (isset($_POST["txt_pesquisa"])) ? $_POST["txt_pesquisa"] : "";
-        $sql = "SELECT 
+            $txt_pesquisa = (isset($_POST["txt_pesquisa"])) ? $_POST["txt_pesquisa"] : "";
+            $sql = "SELECT 
         id_Contato,
         upper(nome_Contato) AS nome_Contato,
         lower(email_contato) AS email_Contato,
@@ -57,25 +60,27 @@
         nome_Contato LIKE '%{$txt_pesquisa}%'
         ORDER BY nome_Contato ASC
         LIMIT $inicio, $quantidade;";
-        $rs = mysqli_query($conexao, $sql) or die("Erro na consulta" . mysqli_error($conexao));
-        while ($dados = mysqli_fetch_assoc($rs)) {
-        ?>
-            <tr>
-                <td><?= $dados["id_Contato"] ?></td>
-                <td><?= $dados["nome_Contato"] ?></td>
-                <td><?= $dados["email_Contato"] ?></td>
-                <td><?= $dados["telefone_Contato"] ?></td>
-                <td><?= $dados["endereco_Contato"] ?></td>
-                <td><?= $dados["sexo_Contato"] ?></td>
-                <td><?= $dados["dataNasc_Contato"] ?></td>
-                <td><a href="index.php?menuop=editar-contato&idContato=<?= $dados["id_Contato"] ?>">Editar</a></td>
-                <td><a href="index.php?menuop=excluir-contato&idContato=<?= $dados["id_Contato"] ?>">Excluir</a></td>
-            </tr>
-        <?php
-        }
-        ?>
-    </tbody>
-</table>
+            $rs = mysqli_query($conexao, $sql) or die("Erro na consulta" . mysqli_error($conexao));
+            while ($dados = mysqli_fetch_assoc($rs)) {
+            ?>
+                <tr>
+                    <td><?= $dados["id_Contato"] ?></td>
+                    <td><?= $dados["nome_Contato"] ?></td>
+                    <td><?= $dados["email_Contato"] ?></td>
+                    <td><?= $dados["telefone_Contato"] ?></td>
+                    <td><?= $dados["endereco_Contato"] ?></td>
+                    <td><?= $dados["sexo_Contato"] ?></td>
+                    <td><?= $dados["dataNasc_Contato"] ?></td>
+                    <td><a href="index.php?menuop=editar-contato&idContato=<?= $dados["id_Contato"] ?>">Editar</a></td>
+                    <td><a href="index.php?menuop=excluir-contato&idContato=<?= $dados["id_Contato"] ?>">Excluir</a></td>
+                </tr>
+            <?php
+            }
+            ?>
+        </tbody>
+    </table>
+</div>
+
 <br>
 <?php
 
