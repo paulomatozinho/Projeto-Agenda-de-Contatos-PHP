@@ -14,7 +14,7 @@ $dados = mysqli_fetch_assoc($rs);
 </header>
 
 <div>
-    <form action="index.php?menuop=atualizar-contato" method="post">
+    <form class="needs-validation" action="index.php?menuop=atualizar-contato" method="post" novalidate>
         <div class="mb-3 col-3">
             <label for="idContato" class="form-label">ID</label>
             <div class="input-group">
@@ -27,7 +27,13 @@ $dados = mysqli_fetch_assoc($rs);
             <label for="nomeContato" class="form-label">Nome</label>
             <div class="input-group">
                 <span class="input-group-text"><i class="bi bi-person-circle"></i></span>
-                <input type="text" class="form-control" name="nomeContato" value="<?= $dados["nome_Contato"] ?>">
+                <input type="text" class="form-control" name="nomeContato" value="<?= $dados["nome_Contato"] ?>" required>
+                <div class="valid-feedback">
+                    Preenchimento Correto
+                </div>
+                <div class="invalid-feedback">
+                    O campo deve conter no máximo 255 caracteres
+                </div>
             </div>
         </div>
 
@@ -35,7 +41,13 @@ $dados = mysqli_fetch_assoc($rs);
             <label for="emailContato" class="form-label">E-mail</label>
             <div class="input-group">
                 <span class="input-group-text">@</span>
-                <input type="email" class="form-control" name="emailContato" value="<?= $dados["email_Contato"] ?>">
+                <input type="email" class="form-control" name="emailContato" value="<?= $dados["email_Contato"] ?>" required>
+                <div class="valid-feedback">
+                    Preenchimento Correto
+                </div>
+                <div class="invalid-feedback">
+                    Preenchimento inválido
+                </div>
             </div>
         </div>
 
@@ -43,7 +55,13 @@ $dados = mysqli_fetch_assoc($rs);
             <label for="telefoneContato" class="form-label">Telefone</label>
             <div class="input-group">
                 <span class="input-group-text"><i class="bi bi-telephone"></i></span>
-                <input type="text" class="form-control" name="telefoneContato" value="<?= $dados["telefone_Contato"] ?>">
+                <input type="text" class="form-control" name="telefoneContato" value="<?= $dados["telefone_Contato"] ?>" required>
+                <div class="valid-feedback">
+                    Preenchimento Correto
+                </div>
+                <div class="invalid-feedback">
+                    Preenchimento inválido
+                </div>
             </div>
         </div>
 
@@ -51,27 +69,44 @@ $dados = mysqli_fetch_assoc($rs);
             <label for="enderecoContato" class="form-label">Endereço</label>
             <div class="input-group">
                 <span class="input-group-text"><i class="bi bi-mailbox"></i></span>
-                <input type="text" class="form-control" name="enderecoContato" value="<?= $dados["endereco_Contato"] ?>">
+                <input type="text" class="form-control" name="enderecoContato" value="<?= $dados["endereco_Contato"] ?>" required>
+                <div class="valid-feedback">
+                    Preenchimento Correto
+                </div>
+                <div class="invalid-feedback">
+                    Preenchimento inválido
+                </div>
             </div>
         </div>
-
 
         <div class="row">
             <div class="mb-3 col-3">
                 <label for="sexoContato" class="form-label">Sexo</label>
-                <select class="form-select" name="sexoContato" id="sexoContato">
+                <select class="form-select" name="sexoContato" id="sexoContato" required>
                     <option <?php echo ($dados['sexo_Contato'] == '') ? 'selected' : '' ?> value="">Selecionar</option>
                     <option <?php echo ($dados['sexo_Contato'] == 'M') ? 'selected' : '' ?> value="M">Maculino</option>
                     <option <?php echo ($dados['sexo_Contato'] == 'F') ? 'selected' : '' ?> value="F">Feminino</option>
                     <option <?php echo ($dados['sexo_Contato'] == 'O') ? 'selected' : '' ?> value="O">Outro</option>
                 </select>
+                <div class="valid-feedback">
+                    Preenchimento Correto
+                </div>
+                <div class="invalid-feedback">
+                    Preenchimento inválido
+                </div>
             </div>
 
             <div class="mb-3 col-3">
                 <label for="dataNascContato" class="form-label">Data de Nascimento </label>
                 <div class="input-group">
                     <span class="input-group-text"><i class="bi bi-calendar-date"></i></span>
-                    <input type="date" class="form-control" name="dataNascContato" id="dataNascContato">
+                    <input type="date" class="form-control" name="dataNascContato" id="dataNascContato" required>
+                    <div class="valid-feedback">
+                        Preenchimento Correto
+                    </div>
+                    <div class="invalid-feedback">
+                        Preenchimento inválido
+                    </div>
                 </div>
             </div>
         </div>

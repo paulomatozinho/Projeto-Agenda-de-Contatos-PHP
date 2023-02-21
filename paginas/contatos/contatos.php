@@ -37,9 +37,9 @@
         <tbody>
             <?php
 
-            $quantidade = 5;
+            $quantidade = 7;
 
-            $pagina = (isset($_GET['pagina'])) ? (int)$_GET['pagina'] : 1;
+            $pagina = (isset($_GET['pagina'])) ? (int)$_GET['pagina'] : 2;
 
             $inicio = ($quantidade * $pagina) - $quantidade;
 
