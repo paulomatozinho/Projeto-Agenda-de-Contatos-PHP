@@ -37,7 +37,7 @@
         <tbody>
             <?php
 
-            $quantidade = 7;
+            $quantidade = 10;
 
             $pagina = (isset($_GET['pagina'])) ? (int)$_GET['pagina'] : 2;
 

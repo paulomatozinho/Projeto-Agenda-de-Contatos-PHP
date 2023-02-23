@@ -1,5 +1,5 @@
 body {
-    background-color: #bb7676;
+    background-color: #5f4f4f;
     color: #fff;
 }
 
@@ -9,6 +9,7 @@ a {
 
 img {
     width: 120px;
+    border-radius: 5px;
 }
 
 .tabela {
